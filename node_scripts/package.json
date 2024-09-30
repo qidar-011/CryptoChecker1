@@ -1,0 +1,16 @@
+{
+  "name": "node_scripts",
+  "version": "1.0.0",
+  "main": "solanaChecker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@degenfrends/solana-rugchecker": "^0.0.16",
+    "@solana/web3.js": "^1.95.3"
+  }
+}

@@ -8,12 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use TCG\Voyager\Traits\VoyagerUser; // إضافة Trait الخاص بـ Voyager
 use TCG\Voyager\Models\Role;
-use PragmaRX\Google2FALaravel\Support\AuthenticatesWith2FA;
+// use PragmaRX\Google2FALaravel\Support\AuthenticatesWith2FA;
 
 
 class User extends \TCG\Voyager\Models\User
+// class User extends VoyagerUser
 {
-    use HasFactory, Notifiable, VoyagerUser, AuthenticatesWith2FA;
+    use HasFactory, Notifiable, VoyagerUser;
 
     /**
      * The attributes that are mass assignable.
