@@ -18,7 +18,8 @@ class TokenSeeder extends Seeder
             'name' => 'Serum',
             'symbol' => 'SRM',
             'address' => 'Your_Token_Address_Here',
-            'description' => 'Serum is a decentralized exchange (DEX) platform built on Solana.'
+            'network' => 'Solana',
+            // 'description' => 'Serum is a decentralized exchange (DEX) platform built on Solana.'
         ]);
 
                 // أضف المزيد من العملات إذا رغبت

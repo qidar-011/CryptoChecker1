@@ -12,6 +12,7 @@ class NewlyListedCurrency extends Model
     protected $fillable = [
         'name',
         'symbol',
+        'address',
         'network',
         'expected_price',
         'total_supply',
@@ -28,7 +29,7 @@ class NewlyListedCurrency extends Model
         'dex_listing',
         'logo_url'
     ];
-    
+
     /* protected $fillable = [
         'name',
         'symbol',

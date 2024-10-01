@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('symbol')->unique();
+            $table->string(column: 'address')->unique();
             $table->string('network');
             $table->decimal('expected_price', 18, 2)->nullable();
             $table->decimal('growth_percentage', 5, 2)->nullable();
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->boolean('mint')->default(false);
             $table->boolean('freeze')->default(false);
             $table->string('jito')->nullable();
+            $table->string('logo_url')->nullable();
             $table->timestamps();
         });
     }

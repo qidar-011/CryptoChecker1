@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('newly_listed_currencies', function (Blueprint $table) {
-            
             $table->id();
             $table->string('name');
             $table->string('symbol');
+            $table->string(column: 'address')->unique();
             $table->string('network')->default('Solana');
             $table->decimal('expected_price', 18, 2)->nullable();
             $table->bigInteger('total_supply')->nullable();
@@ -32,28 +32,6 @@ return new class extends Migration
             $table->boolean('dex_listing')->default(false);
             $table->string('logo_url')->nullable();
             $table->timestamps();
-
-            /* old */
-            /* $table->id();
-            $table->string('name');
-            $table->string('symbol')->unique();
-            $table->string('network');
-            $table->decimal('expected_price', 18, 2)->nullable();
-            $table->decimal('growth_percentage', 5, 2)->nullable();
-            $table->bigInteger('total_supply')->nullable();
-            $table->bigInteger('circulating_supply')->nullable();
-            $table->bigInteger('next_supply')->nullable();
-            $table->boolean('lp_locked')->default(false);
-            $table->boolean('mint')->default(false);
-            $table->boolean('freeze')->default(false);
-            $table->string('jito')->nullable();
-            $table->bigInteger('team_coins')->nullable();
-            $table->bigInteger('ads_coins')->nullable();
-            $table->decimal('security_percentage', 5, 2)->nullable();
-            $table->string('listing_time')->nullable();
-            $table->boolean('dex_listing')->default(false);
-            $table->timestamps(); */
-            
         });
     }
 

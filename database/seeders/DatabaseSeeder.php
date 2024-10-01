@@ -17,24 +17,79 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // إنشاء الأدوار وتحديد الـ ID الخاص بها
+        $adminRole = Role::updateOrCreate(['id' => 1], [
+            'name' => 'admin',
+            'display_name' => 'Admin'
+        ]);
+
+        $supervisorRole = Role::updateOrCreate(['id' => 2], [
+            'name' => 'supervisor',
+            'display_name' => 'Supervisor'
+        ]);
+
+        $managerRole = Role::updateOrCreate(['id' => 3], [
+            'name' => 'manager',
+            'display_name' => 'Manager'
+        ]);
+
+        $userRole = Role::updateOrCreate(['id' => 4], [
+            'name' => 'user',
+            'display_name' => 'User'
+        ]);
+
+        // إنشاء مستخدم "المسئول"
+        User::create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('adminpassword'),
+            'role_id' => $adminRole->id,
+        ]);
+
+        // إنشاء مستخدم "المشرف"
+        User::create([
+            'name' => 'Supervisor User',
+            'email' => 'supervisor@example.com',
+            'password' => bcrypt('supervisorpassword'),
+            'role_id' => $supervisorRole->id,
+        ]);
+
+        // إنشاء مستخدم "المدير"
+        User::create([
+            'name' => 'Manager User',
+            'email' => 'manager@example.com',
+            'password' => bcrypt('managerpassword'),
+            'role_id' => $managerRole->id,
+        ]);
+
+        // إنشاء مستخدم عادي
+        User::create([
+            'name' => 'Regular User',
+            'email' => 'user@example.com',
+            'password' => bcrypt('userpassword'),
+            'role_id' => $userRole->id,
         ]);
 
         
-        $adminRole = Role::firstOrCreate(
+        /* User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'role_id' => $adminRole->id,
+        ]); */
+
+        
+        /* $adminRole = Role::firstOrCreate(
             ['name' => 'admin'],
             ['display_name' => 'Admin']
-        );
+        ); */
 
         // إنشاء حساب مسؤول
-        User::create([
+        /* User::create([
             'name' => 'sudo',
             'email' => 'quidarsarhan@gmail.com',
             'password' => bcrypt('123123'), // استبدل 'your_password' بكلمة المرور الخاصة بك
             'role_id' => $adminRole->id,
-        ]);
+        ]); */
 
         $this->call(TokenSeeder::class);
     }

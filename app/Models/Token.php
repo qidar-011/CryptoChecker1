@@ -12,6 +12,7 @@ class Token extends Model
     protected $fillable = [
         'name',
         'symbol',
+        'address',
         'network',
         'expected_price',
         'growth_percentage',
