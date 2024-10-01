@@ -9,7 +9,43 @@
     </video>
 @endsection
 
+@extends('website.layouts.app')
+
 @section('content')
+    <div class="container">
+        <h2>Recently Listed Currencies</h2>
+        @foreach ($newlyListedCurrencies as $currency)
+            <div class="coin-info">
+                <div class="coin-info-header">
+                    <img src="{{ $currency->logo_url }}" alt="{{ $currency->symbol }}">
+                    <div>
+                        {{ $currency->name }} ({{ $currency->symbol }})<br>
+                        Network: {{ $currency->network }}<br>
+                        Expected Price: ${{ $currency->expected_price }}
+                    </div>
+                </div>
+                <table class="coin-table">
+                    <tbody>
+                        <tr><td>Total Supply:</td><td>{{ $currency->total_supply }}</td></tr>
+                        <tr><td>Circulating Supply:</td><td>{{ $currency->circulating_supply }}</td></tr>
+                        <tr><td>Next Supply:</td><td>{{ $currency->next_supply }}</td></tr>
+                        <tr><td>LP Locked:</td><td>{{ $currency->lp_locked ? 'Yes' : 'No' }}</td></tr>
+                        <tr><td>Mint:</td><td>{{ $currency->mint ? 'Yes' : 'No' }}</td></tr>
+                        <tr><td>Freeze:</td><td>{{ $currency->freeze ? 'Yes' : 'No' }}</td></tr>
+                        <tr><td>JITO:</td><td>{{ $currency->jito }}</td></tr>
+                        <tr><td>Team Coins:</td><td>{{ $currency->team_coins }}</td></tr>
+                        <tr><td>Ads Coins:</td><td>{{ $currency->ads_coins }}</td></tr>
+                        <tr><td>Security %:</td><td>{{ $currency->security_percentage }}%</td></tr>
+                        <tr><td>Listing Time:</td><td>{{ $currency->listing_time }}</td></tr>
+                        <tr><td>DEX Listing:</td><td>{{ $currency->dex_listing ? 'Yes' : 'No' }}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        @endforeach
+    </div>
+@endsection
+
+{{-- @section('content')
     <!-- أدوات البحث -->
     <div class="search-tools">
         <div class="search-container">
@@ -86,4 +122,4 @@
             </table>
         </div>
     @endforeach
-@endsection
+@endsection --}}

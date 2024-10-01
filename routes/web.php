@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
+// مسارات لوحة التحكم باستخدام Voyager
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -36,6 +36,9 @@ Route::namespace('App\Http\Controllers\Website')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('website.home');
     Route::get('/token/{id}', [TokenController::class, 'show'])->name('website.token.show');
     Route::post('/check-token', [AnalysisController::class, 'checkToken'])->name('website.checkToken');
+
+    // فحص التوكين
+    Route::post('/check-token', [HomeController::class, 'checkToken'])->name('token.check');
 
     Route::get('/newly-listed-currencies', [NewlyListedCurrencyController::class, 'index'])->name('website.newlyListedCurrencies.index');
     Route::get('/newly-listed-currencies/{id}', [NewlyListedCurrencyController::class, 'show'])->name('website.newlyListedCurrencies.show');
