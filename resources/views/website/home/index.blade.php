@@ -1,5 +1,39 @@
 @extends('website.layouts.app')
 
+@section('title', 'Home')
+
+@section('content')
+    <!-- أدوات البحث -->
+    <form action="{{ route('website.checkToken') }}" method="POST">
+        @csrf
+        <div class="search-tools">
+            <div class="search-container">
+                <input type="text" name="token_address" class="form-control search-bar" placeholder="Enter Token Address" required>
+                <select name="network" class="form-select network-select">
+                    <option value="SOL" selected>SOL</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Check</button>
+        </div>
+    </form>
+     <!-- عرض رسائل الخطأ -->
+    @if ($errors->any())
+        <div class="alert alert-danger text-center">
+            {{ $errors->first() }}
+        </div>
+    @endif
+    
+    <!-- قسم العملات المدرجة حديثًا -->
+    @include('website.home.newlyListedCurrencies.index')
+@endsection
+
+
+
+
+
+
+{{-- @extends('website.layouts.app')
+
 @section('title', 'CryptoChecker - Home Page')
 
 @section('main-logo')
@@ -43,7 +77,7 @@
             </div>
         @endforeach
     </div>
-@endsection
+@endsection --}}
 
 {{-- @section('content')
     <!-- أدوات البحث -->

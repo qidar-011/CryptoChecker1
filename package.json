@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@degenfrends/solana-rugchecker": "^0.0.16",
-        "@solana/web3.js": "^1.95.3"
+        "@solana/web3.js": "^1.95.4",
+        "dotenv": "^16.4.5",
+        "node-fetch": "^2.7.0"
     }
 }

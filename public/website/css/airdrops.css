@@ -1,0 +1,161 @@
+/* ============================
+   تنسيقات صفحة Airdrops
+   ============================ */
+
+/* إعدادات عامة */
+body {
+    background-color: #12161C;
+    color: #EAECEF;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    margin-top: 40px;
+    max-width: 900px;
+}
+
+/* عناوين الأقسام */
+h2.pricing-header {
+    color: #F3BA2F;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* كروت الأيردروبات */
+.card {
+    background-color: #181A20;
+    border: 2px solid #F3BA2F; /* الإطار الرئيسي */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* تحسين الظل */
+}
+
+/* عنوان الكارد */
+.card-header {
+    background-color: #F3BA2F;
+    color: #12161C;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* جسم الكارد */
+.card-body {
+    color: #EAECEF;
+    text-align: center;
+    padding: 10px;
+}
+
+/* صورة الكارد */
+.card-body img {
+    max-width: 60px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* نصوص داخل الكارد */
+.card-body p {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.card-body p strong {
+    color: #F3BA2F;
+    font-size: 14px;
+}
+
+/* زر الاشتراك */
+.btn-subscribe {
+    background-color: #F3BA2F;
+    color: #12161C;
+    font-weight: bold;
+    padding: 5px 16px;
+    border-radius: 25px;
+    border: none;
+    margin-top: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-subscribe:hover {
+    background-color: #E5A500;
+}
+
+/* تنسيقات الجداول */
+.table {
+    background-color: #181A20;
+    color: #EAECEF;
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border: 2px solid #F3BA2F; /* الإطار الرئيسي للجداول */
+}
+
+.table thead th {
+    background-color: #F3BA2F;
+    color: #12161C;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table tbody td {
+    background-color: #181A20;
+    color: #EAECEF;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* تنسيقات قائمة الشروط */
+ul.list-group {
+    background-color: #12161C;
+    border: 2px solid #F3BA2F; /* الإطار الرئيسي لقائمة الشروط */
+    border-radius: 8px;
+}
+
+ul.list-group li {
+    background-color: #181A20;
+    color: #EAECEF;
+    padding: 10px 15px;
+}
+
+ul.list-group li:hover {
+    background-color: #F3BA2F;
+    color: #12161C;
+}
+
+/* تحسين التوافق مع جميع المقاسات */
+@media (max-width: 768px) {
+    .card-body img {
+        max-width: 45px;
+    }
+
+    .btn-subscribe {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+}

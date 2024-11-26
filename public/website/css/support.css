@@ -1,0 +1,169 @@
+/* ============================
+   تنسيقات صفحة Support
+   ============================ */
+
+/* إعدادات عامة */
+body {
+    background-color: #12161C;
+    color: #EAECEF;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    margin-top: 40px;
+    max-width: 900px;
+}
+
+/* عناوين الأقسام */
+h2.support-header {
+    color: #F3BA2F;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+/* كروت الأقسام */
+.support-section {
+    background-color: #181A20;
+    border: 2px solid #F3BA2F;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.support-section:hover {
+    transform: translateY(-5px);
+}
+
+.support-section h3 {
+    color: #F3BA2F;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.support-section p {
+    font-size: 16px;
+    color: #EAECEF;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.support-section a {
+    color: #F3BA2F;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.support-section a:hover {
+    color: #E5A500;
+}
+
+/* نموذج الدعم */
+.support-form {
+    background-color: #181A20;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.support-form label {
+    color: #F3BA2F;
+    margin-bottom: 8px;
+}
+
+.support-form input,
+.support-form select,
+.support-form textarea {
+    background-color: #12161C;
+    border: 1px solid #F3BA2F;
+    color: #EAECEF;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.support-form input::placeholder,
+.support-form textarea::placeholder {
+    color: #EAECEF;
+    opacity: 0.8;
+}
+
+.support-form select {
+    width: 100%;
+}
+
+.support-form input[type="file"] {
+    padding: 5px;
+}
+
+.btn-submit {
+    background-color: #F3BA2F;
+    color: #12161C;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: #E5A500;
+}
+
+/* قسم Call-to-Action */
+.call-to-action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.priority {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #F3BA2F;
+}
+
+/* قسم الأسئلة الشائعة */
+.faq-section {
+    background-color: #181A20;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #F3BA2F;
+}
+
+.faq-section h4 {
+    color: #F3BA2F;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.faq-section p {
+    font-size: 14px;
+    color: #EAECEF;
+    margin-bottom: 10px;
+}
+
+.faq-section p a {
+    color: #F3BA2F;
+}
+
+/* تحسين التوافق مع جميع المقاسات */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+    }
+
+    .support-section h3 {
+        font-size: 20px;
+    }
+
+    .support-section p,
+    .support-form label {
+        font-size: 14px;
+    }
+}

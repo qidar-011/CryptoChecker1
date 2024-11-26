@@ -1,0 +1,12 @@
+
+|-- Controllers
+|   |-- AuthController.php
+|   |-- CryptoController.php
+|   |-- UserController.php
+|-- Models
+|   |-- User.php
+|   |-- Crypto.php
+|-- public
+|   |-- index.php
+|-- routes
+|   |-- web.php

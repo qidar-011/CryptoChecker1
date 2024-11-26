@@ -11,3 +11,4 @@ function updatePrices() {
 // تحديث الأسعار كل 5 دقائق
 updatePrices();
 setInterval(updatePrices, 300000);
+

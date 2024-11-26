@@ -23,11 +23,22 @@ class AnalysisController extends Controller
         ]);
 
         $tokenAddress = $request->input('token_address');
-        $analysis = $this->tokenAnalysisService->analyze($tokenAddress);
 
+        try {
+            $analysisResult = $this->tokenAnalysisService->analyze($tokenAddress);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+        return view('website.analysisResults.index', compact('analysisResult'));
+
+
+        // $analysis = $this->tokenAnalysisService->analyze($tokenAddress);
+
+        // $analysisResult = shell_exec("node node_scripts/fetchTokenData.js $tokenAddress");
         // يمكنك إضافة منطق إضافي لمعالجة النتائج إذا لزم الأمر
 
-        return view('website.analysisResults.index', compact('analysis'));
+        // return view('website.analysisResults.index', compact('analysis'));
     }
 /*     protected $tokenAnalysisService;
 

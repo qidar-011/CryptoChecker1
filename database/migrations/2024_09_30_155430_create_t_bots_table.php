@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('t_bots', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->text('features');
+            $table->string('plan');
+            $table->string('button_text');
             $table->timestamps();
         });
     }

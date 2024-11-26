@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    'solscan' => [
+        // 'base_uri' => 'https://api.solscan.io',
+        'api_key'    => env('SOLSCAN_API_KEY'),
+        'sol_aut'    => env('SOLSCAN_SOL_AUT'),
+        'cookie'     => env('SOLSCAN_COOKIE'),
+        'api_url'    => env('SOLSCAN_API_URL', 'https://api-v2.solscan.io/'), // تأكد من وجود '/' في النهاية
+
+    ],
+
 ];

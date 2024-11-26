@@ -1,0 +1,107 @@
+/* ============================
+   تنسيقات صفحة Privacy Policy
+   ============================ */
+
+/* إعدادات عامة */
+body {
+    background-color: #12161C;
+    color: #EAECEF;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    margin-top: 40px;
+    max-width: 900px;
+}
+
+/* عناوين الأقسام */
+h2.policy-header {
+    color: #F3BA2F;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+/* كروت الأقسام */
+.policy-section {
+    background-color: #181A20;
+    border: 2px solid #F3BA2F;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.policy-section:hover {
+    transform: translateY(-5px);
+}
+
+.policy-section h3 {
+    color: #F3BA2F;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.policy-section p {
+    font-size: 16px;
+    color: #EAECEF;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.policy-section ul {
+    margin-left: 20px;
+}
+
+.policy-section ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #EAECEF;
+}
+
+.policy-section ul li strong {
+    color: #F3BA2F;
+}
+
+/* زر الموافقة */
+.btn-agree {
+    background-color: #F3BA2F;
+    color: #12161C;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 40px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agree:hover {
+    background-color: #E5A500;
+}
+
+/* قسم Call-to-Action */
+.call-to-action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* تحسين التوافق مع جميع المقاسات */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+    }
+
+    .policy-section h3 {
+        font-size: 20px;
+    }
+
+    .policy-section p,
+    .policy-section ul li {
+        font-size: 14px;
+    }
+}

@@ -12,7 +12,40 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::firstOrNew(['name' => 'admin']);
+
+        // دور "Admin"
+        $adminRole = Role::firstOrNew(['name' => 'admin']);
+        if (!$adminRole->exists) {
+            $adminRole->fill([
+                'display_name' => 'Admin',
+            ])->save();
+        }
+
+        // دور "Supervisor"
+        $supervisorRole = Role::firstOrNew(['name' => 'supervisor']);
+        if (!$supervisorRole->exists) {
+            $supervisorRole->fill([
+                'display_name' => 'Supervisor',
+            ])->save();
+        }
+
+        // دور "Manager"
+        $managerRole = Role::firstOrNew(['name' => 'manager']);
+        if (!$managerRole->exists) {
+            $managerRole->fill([
+                'display_name' => 'Manager',
+            ])->save();
+        }
+
+        // دور "User"
+        $userRole = Role::firstOrNew(['name' => 'user']);
+        if (!$userRole->exists) {
+            $userRole->fill([
+                'display_name' => 'User',
+            ])->save();
+        }
+        
+        /* $role = Role::firstOrNew(['name' => 'admin']);
         if (!$role->exists) {
             $role->fill([
                 'display_name' => __('voyager::seeders.roles.admin'),
@@ -24,6 +57,6 @@ class RolesTableSeeder extends Seeder
             $role->fill([
                 'display_name' => __('voyager::seeders.roles.user'),
             ])->save();
-        }
+        } */
     }
 }

@@ -1,0 +1,211 @@
+/* ============================
+   تنسيقات صفحة Telegram Bots
+   ============================ */
+
+/* إعدادات عامة */
+body {
+    background-color: #12161C;
+    color: #EAECEF;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* شريط التنقل العلوي */
+.navbar {
+    background-color: #181A20;
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: #F3BA2F !important;
+}
+
+.navbar .nav-link:hover {
+    color: #E5A500 !important;
+}
+
+/* أزرار */
+.btn-primary {
+    background-color: #F3BA2F;
+    border: none;
+    color: #12161C;
+}
+
+.btn-primary:hover {
+    background-color: #E5A500;
+}
+
+/* كروت البوتات */
+.card {
+    background-color: #181A20;
+    border: 1px solid #F3BA2F;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #EAECEF;
+    width: 100%;
+    max-width: 350px;
+    margin: 15px auto;
+}
+
+.card-header {
+    background-color: #F3BA2F;
+    color: #12161C;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* إبراز الكلمات الرئيسية */
+.highlight {
+    color: #F3BA2F;
+    font-weight: bold;
+}
+
+/* زر الاشتراك */
+.btn-subscribe {
+    background-color: #F3BA2F;
+    color: #12161C;
+    border: none;
+    padding: 8px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-subscribe:hover {
+    background-color: #E5A500;
+    color: #12161C;
+}
+
+/* عناوين الأقسام */
+.pricing-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #F3BA2F;
+    font-weight: bold;
+}
+
+/* الشعار الرئيسي */
+.main-logo {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+/* الفوتر */
+footer {
+    background-color: #181A20;
+    padding: 20px 0;
+    color: #EAECEF;
+    text-align: center;
+}
+
+footer a {
+    color: #F3BA2F;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #E5A500;
+}
+
+/* تحسين التوافق مع جميع المقاسات */
+@media (max-width: 768px) {
+    .btn-subscribe {
+        padding: 6px 20px;
+        font-size: 12px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+
+/* ============================
+   تنسيقات مخصصة للأقسام المستهدفة
+   ============================ */
+
+/* خطط الاشتراك */
+.subscription-plans {
+    background-color: #181A20;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* حاويات list-group داخل خطط الاشتراك */
+.subscription-plans .list-group {
+    background-color: #181A20;
+}
+
+.subscription-plans .list-group-item {
+    background-color: #181A20;
+    color: #EAECEF;
+    border: 1px solid #F3BA2F;
+}
+
+/* شروط الاشتراك */
+.subscription-terms {
+    background-color: #181A20;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.subscription-terms .list-group {
+    background-color: #181A20;
+}
+
+.subscription-terms .list-group-item {
+    background-color: #181A20;
+    color: #EAECEF;
+    border: 1px solid #F3BA2F;
+}
+
+/* ============================
+   تأثيرات تدرج لوني متحركة للأقسام المستهدفة
+   ============================ */
+
+/* تدرج لوني متحرك لخطة الاشتراك */
+.subscription-plans {
+    background: linear-gradient(270deg, #181A20, #2C3E50, #181A20);
+    background-size: 600% 600%;
+    animation: GradientAnimation 10s ease infinite;
+}
+
+/* تدرج لوني متحرك لشروط الاشتراك */
+.subscription-terms {
+    background: linear-gradient(270deg, #181A20, #2C3E50, #181A20);
+    background-size: 600% 600%;
+    animation: GradientAnimation 10s ease infinite;
+}
+
+/* تعريف Keyframes لتدرج لوني متحرك */
+@keyframes GradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+

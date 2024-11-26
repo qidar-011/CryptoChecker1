@@ -1,5 +1,411 @@
 @extends('website.layouts.app')
 
+@section('title', 'Analysis Results')
+
+@section('content')
+    <div class="coin-info">
+        <!-- شعار العملة والمعلومات الرئيسية -->
+        <div class="coin-info-header">
+            <img src="{{ $analysisResult['logo_url'] ?? asset('website/images/default-token.png') }}" alt="{{ $analysisResult['symbol'] }}" width="50">
+            <div class="coin-details">
+                <div class="coin-name">{{ $analysisResult['name'] }} ({{ $analysisResult['symbol'] }})</div>
+                <div class="coin-network">Network: {{ $analysisResult['network'] }}</div>
+                <div class="coin-price">Price: ${{ number_format($analysisResult['price_usd'], 6) }}</div>
+                <div class="coin-growth">Market Cap: ${{ number_format($analysisResult['market_cap'], 2) }}</div>
+            </div>
+        </div>
+
+        <!-- الجدول الأول لبيانات العملة -->
+        <div class="coin-table-container">
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Total Supply:</td>
+                        <td>{{ number_format($analysisResult['total_supply'], 0, '.', ',') }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Circulating Supply:</td>
+                        <td>{{ number_format($analysisResult['circulating_supply'], 0, '.', ',') }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Trading Volume:</td>
+                        <td>${{ number_format($analysisResult['trading_volume'], 2, '.', ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Market Cap:</td>
+                        <td>${{ number_format($analysisResult['market_cap'], 2, '.', ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>${{ number_format($analysisResult['liquidity'], 2, '.', ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Freeze Authority:</td>
+                        <td>{{ $analysisResult['freeze'] ? 'Exists' : 'None' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mint Authority:</td>
+                        <td>{{ $analysisResult['mint'] ? 'Exists' : 'None' }}</td>
+                    </tr>
+                    <tr>
+                        <td>JITO:</td>
+                        <td>{{ $analysisResult['jito'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- عرض Top Holders -->
+        <div class="coin-table-container">
+            <h5>Top 5 Holders</h5>
+            <table class="coin-table">
+                <tbody>
+                    @forelse($analysisResult['top_holders'] as $index => $holder)
+                        <tr>
+                            <td>{{ $index + 1 }}.</td>
+                            <td>{{ $holder }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="2">No Top Holders data available.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Audit Results -->
+        <div class="coin-table-container">
+            <h5>Audit Results</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Security Audit:</td>
+                        <td>{{ $analysisResult['audit_results']['security_audit'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Contract Verified:</td>
+                        <td>{{ $analysisResult['audit_results']['contract_verified'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Developer Team:</td>
+                        <td>{{ $analysisResult['audit_results']['developer_team'] ?? 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Token Rating -->
+        <div class="coin-table-container">
+            <h5>Token Rating</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Community:</td>
+                        <td>{{ $analysisResult['token_rating']['community'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>{{ $analysisResult['token_rating']['liquidity'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Project Quality:</td>
+                        <td>{{ $analysisResult['token_rating']['project_quality'] ?? 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
+
+
+{{-- @extends('website.layouts.app')
+
+@section('title', 'Analysis Results')
+
+@section('content')
+    <!-- محتوى صفحة نتائج الفحص -->
+    <div class="coin-info">
+        <!-- شعار العملة والمعلومات الرئيسية -->
+        <div class="coin-info-header">
+            <img src="{{ $analysisResult['logo_url'] }}" alt="{{ $analysisResult['symbol'] }}">
+            <div class="coin-details">
+                <div class="coin-name">{{ $analysisResult['name'] }} ({{ $analysisResult['symbol'] }})</div>
+                <div class="coin-network">Network: {{ $analysisResult['network'] }}</div>
+                <div class="coin-price">Expected Price: ${{ number_format($analysisResult['expected_price'], 2) }}</div>
+                <div class="coin-growth">Growth Percentage: {{ number_format($analysisResult['growth_percentage'], 2) }}%</div>
+            </div>
+        </div>
+
+        <!-- الجدول الأول لبيانات العملة -->
+        <div class="coin-table-container">
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Network:</td>
+                        <td>{{ $analysisResult['network'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Supply:</td>
+                        <td>{{ number_format($analysisResult['total_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Circulating Supply:</td>
+                        <td>{{ number_format($analysisResult['circulating_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Max Supply:</td>
+                        <td>{{ number_format($analysisResult['max_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Market Cap:</td>
+                        <td>${{ number_format($analysisResult['market_cap'], 2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>${{ number_format($analysisResult['liquidity'], 2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>LP Locked:</td>
+                        <td>{{ $analysisResult['lp_locked'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- عرض Top Holders -->
+        <div class="coin-table-container">
+            <h5>Top Holders</h5>
+            <table class="coin-table">
+                <tbody>
+                    @forelse($analysisResult['top_holders'] as $index => $holder)
+                        <tr>
+                            <td>{{ $index + 1 }}.</td>
+                            <td>{{ $holder }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="2">No Top Holders data available.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- جدول Mint, Freeze, JITO -->
+        <div class="coin-table-container">
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Mint:</td>
+                        <td>{{ $analysisResult['mint'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Freeze:</td>
+                        <td>{{ $analysisResult['freeze'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>JITO:</td>
+                        <td>{{ $analysisResult['jito'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Audit Results -->
+        <div class="coin-table-container">
+            <h5>Audit Results</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Security Audit:</td>
+                        <td>{{ $analysisResult['audit_results']['security_audit'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Contract Verified:</td>
+                        <td>{{ isset($analysisResult['audit_results']['contract_verified']) && $analysisResult['audit_results']['contract_verified'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Developer Team:</td>
+                        <td>{{ $analysisResult['audit_results']['developer_team'] ?? 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Coin Rating -->
+        <div class="coin-table-container">
+            <h5>Coin Rating</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Community:</td>
+                        <td>{{ $analysisResult['coin_rating']['community'] ?? 'N/A' }}/5</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>{{ $analysisResult['coin_rating']['liquidity'] ?? 'N/A' }}/5</td>
+                    </tr>
+                    <tr>
+                        <td>Project Quality:</td>
+                        <td>{{ $analysisResult['coin_rating']['project_quality'] ?? 'N/A' }}/5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
+ --}}
+
+
+
+
+
+{{-- @extends('website.layouts.app')
+@section('title', 'Analysis Results')
+@section('content')
+    <!-- محتوى صفحة نتائج الفحص -->
+    <div class="coin-info">
+        <!-- شعار العملة والمعلومات الرئيسية -->
+        <div class="coin-info-header">
+            <img src="{{ $analysisResult['logo_url'] }}" alt="{{ $analysisResult['symbol'] }}">
+            <div class="coin-details">
+                <div class="coin-name">{{ $analysisResult['name'] }} ({{ $analysisResult['symbol'] }})</div>
+                <div class="coin-network">Network: {{ $analysisResult['network'] }}</div>
+                <div class="coin-price">Expected Price: ${{ number_format($analysisResult['expected_price'], 2) }}</div>
+                <div class="coin-growth">Growth Percentage: {{ number_format($analysisResult['growth_percentage'], 2) }}%</div>
+            </div>
+        </div>
+
+        <!-- الجدول الأول لبيانات العملة -->
+        <div class="coin-table-container">
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Network:</td>
+                        <td>{{ $analysisResult['network'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Supply:</td>
+                        <td>{{ number_format($analysisResult['total_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Circulating Supply:</td>
+                        <td>{{ number_format($analysisResult['circulating_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Max Supply:</td>
+                        <td>{{ number_format($analysisResult['max_supply']) }} {{ $analysisResult['symbol'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Market Cap:</td>
+                        <td>${{ number_format($analysisResult['market_cap'], 2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>${{ number_format($analysisResult['liquidity'], 2) }}</td>
+                    </tr>
+                    <tr>
+                        <td>LP Locked:</td>
+                        <td>{{ $analysisResult['lp_locked'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- عرض Top Holders -->
+        <div class="coin-table-container">
+            <h5>Top Holders</h5>
+            <table class="coin-table">
+                <tbody>
+                    @forelse($analysisResult['top_holders'] as $index => $holder)
+                        <tr>
+                            <td>{{ $index + 1 }}.</td>
+                            <td>{{ $holder }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="2">No Top Holders data available.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- جدول Mint, Freeze, JITO -->
+        <div class="coin-table-container">
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Mint:</td>
+                        <td>{{ $analysisResult['mint'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Freeze:</td>
+                        <td>{{ $analysisResult['freeze'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>JITO:</td>
+                        <td>{{ $analysisResult['jito'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Audit Results -->
+        <div class="coin-table-container">
+            <h5>Audit Results</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Security Audit:</td>
+                        <td>{{ $analysisResult['audit_results']['security_audit'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Contract Verified:</td>
+                        <td>{{ isset($analysisResult['audit_results']['contract_verified']) && $analysisResult['audit_results']['contract_verified'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Developer Team:</td>
+                        <td>{{ $analysisResult['audit_results']['developer_team'] ?? 'N/A' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Coin Rating -->
+        <div class="coin-table-container">
+            <h5>Coin Rating</h5>
+            <table class="coin-table">
+                <tbody>
+                    <tr>
+                        <td>Community:</td>
+                        <td>{{ $analysisResult['coin_rating']['community'] ?? 'N/A' }}/5</td>
+                    </tr>
+                    <tr>
+                        <td>Liquidity:</td>
+                        <td>{{ $analysisResult['coin_rating']['liquidity'] ?? 'N/A' }}/5</td>
+                    </tr>
+                    <tr>
+                        <td>Project Quality:</td>
+                        <td>{{ $analysisResult['coin_rating']['project_quality'] ?? 'N/A' }}/5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection --}}
+
+
+
+
+
+
+
+
+
+{{-- @extends('website.layouts.app')
+
 @section('content')
     <div class="container mt-5">
         <!-- عنوان صفحة نتائج الفحص -->
@@ -132,4 +538,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
