@@ -17,6 +17,7 @@ use App\Http\Controllers\Website\SupportController;
 use App\Http\Controllers\Website\AirdropsController;
 use App\Http\Controllers\Website\AnalysisController;
 use App\Http\Controllers\Website\ContactUsController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Website\PrivacyPolicyController;
 use App\Http\Controllers\Website\NewlyListedCurrencyController;
 
@@ -29,32 +30,16 @@ use App\Http\Controllers\Website\NewlyListedCurrencyController;
 // Route::get('/', action: [HomeController::class, 'index'])->name('website.home');
 
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
-// مسارات المستخدمين المسجلين
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-// مسارات لوحة التحكم باستخدام Voyager
-/* Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-}); */
+
 
 // require __DIR__.'/auth.php';
 
-// مسارات لوحة التحكم
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+
 
 // مسارات الموقع
 Route::get('/', [HomeController::class, 'index'])->name('website.home');
@@ -126,6 +111,84 @@ Route::get('auth/{provider}/callback', [AuthController::class, 'handleProviderCa
 
 
 
+
+// مسارات لوحة التحكم
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name(name: 'dashboard.dashboard');
+    Route::get('/new', [DashboardController::class, 'new'])->name('dashboard.new');
+    Route::get('/tables', [DashboardController::class, 'tables'])->name('dashboard.tables');
+    Route::get('/test', [DashboardController::class, 'test'])->name('dashboard.test');
+});
+
+
+/* Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+}); */
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+
+/* Route::get('/dashboard', function () {
+    return view('tables.blade.php');
+}); */
+
+// مسارات لوحة التحكم
+// Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function () {
+//     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+//     Route::get('/new', [DashboardController::class, 'new'])->name('dashboard.new');
+//     Route::get('/tables', [DashboardController::class, 'tables'])->name('dashboard.tables');
+//     Route::get('/test', [DashboardController::class, 'test'])->name('dashboard.test');
+// });
+
+/* 
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('/tables', function () {
+        return view('dashboard.tables');
+    });
+
+    Route::get('/', function () {
+        return view('dashboard.dashboard');
+    });
+
+    Route::get('/new', function () {
+        return view('dashboard.new');
+    });
+
+    Route::get('/test', function () {
+        return view('dashboard.test');
+    });
+});
+ */
+
+/* Route::get('/tables', function () {
+    return view('tables');
+});
+
+Route::get('/tables', function () {
+    return view('dashboard.tables'); 
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+});
+
+Route::get('/new', function () {
+    return view('dashboard.new');
+});
+
+Route::get('/test', function () {
+    return view('dashboard.test');
+}); */
+
+// Route::get('/dashboard',  action: [DashboardController::class,  'index'])->name('dashboard');
+// Route::get('/new',  [DashboardController::class,  'new'])->name('new');
+// Route::get('/tables',  function () { return view('dashboard.tables'); })->name('tables'); 
+// Route::get('/test',  [DashboardController::class,  'test'])->name('test');
+
+/* Route::get('/dashboard', function () {
+    return view(view: 'dashboard');
+}); */
+
+// Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // مسارات الموقع
 /* Route::namespace('App\Http\Controllers\Website')->group(function () {
